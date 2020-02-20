@@ -6,6 +6,7 @@
   "author": "zenway",
   "license": "MIT",
   "dependencies": {
+    "@znemz/cesium-navigation": "^3.0.5",
     "cesium": "^1.66.0"
   },
   "devDependencies": {
