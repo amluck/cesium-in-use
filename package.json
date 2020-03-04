@@ -11,6 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@znemz/cesium-navigation": "^4.0.0",
+    "cesium": "^1.67.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

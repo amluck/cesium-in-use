@@ -4,7 +4,10 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -27,18 +30,20 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath:
+      process.env.NODE_ENV === 'production'
+        ? config.build.assetsPublicPath
+        : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      vue$: 'vue/dist/vue.esm.js',
+      '@': resolve('src')
     }
   },
   module: {
+    unknownContextCritical: false,
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
@@ -49,7 +54,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [
+          resolve('src'),
+          resolve('test'),
+          resolve('node_modules/webpack-dev-server/client')
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -77,6 +86,24 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: 'node_modules/cesium/Build/Cesium/Workers', to: 'cesium/Workers' }
+    ]),
+    new CopyWebpackPlugin([
+      { from: 'node_modules/cesium/Build/Cesium/ThirdParty', to: 'cesium/ThirdParty' }
+    ]),
+    new CopyWebpackPlugin([
+      { from: 'node_modules/cesium/Build/Cesium/Assets', to: 'cesium/Assets' }
+    ]),
+    new CopyWebpackPlugin([
+      { from: 'node_modules/cesium/Build/Cesium/Widgets', to: 'cesium/Widgets' }
+    ]),
+    new webpack.DefinePlugin({
+      // Define relative base path in cesium for loading assets
+      CESIUM_BASE_URL: JSON.stringify('./cesium')
+    })
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
