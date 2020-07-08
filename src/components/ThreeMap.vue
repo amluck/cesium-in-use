@@ -25,13 +25,13 @@ export default {
         sceneModePicker: false,
         timeline: false,
         animation: false,
-        imageryProvider: googleMapProvider
+        imageryProvider: googleMapProvider,
       }))
       viewer._cesiumWidget._creditContainer.style.display = 'none'
       viewer.scene.globe.showGroundAtmosphere = false
 
       let googleMapProvider = new UrlTemplateImageryProvider({
-        url: 'http://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali'
+        url: 'http://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali',
       })
 
       this.initNavgationBar(viewer)
@@ -44,8 +44,8 @@ export default {
       options.enableDistanceLegend = true
       options.enableCompassOuterRing = true
       viewerCesiumNavigationMixin(viewer, options)
-    }
-  }
+    },
+  },
 }
 </script>
 
