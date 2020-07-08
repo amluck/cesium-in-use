@@ -1438,12 +1438,17 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-cesium@>=1.48, cesium@^1.67.0:
+cesium@>=1.48:
   version "1.67.0"
   resolved "https://registry.npm.taobao.org/cesium/download/cesium-1.67.0.tgz#da12638513f3a0678e2b52466cd65330e339e2f2"
   integrity sha1-2hJjhRPzoGeOK1JGbNZTMOM54vI=
   dependencies:
     esm "^3.2.25"
+
+cesium@^1.71.0:
+  version "1.71.0"
+  resolved "https://registry.npm.taobao.org/cesium/download/cesium-1.71.0.tgz#9a4930f0a06e6f8e8b5a196ea24dc9038778c7fa"
+  integrity sha1-mkkw8KBub46LWhluok3JA4d4x/o=
 
 chalk@^1.0.0, chalk@^1.1.3:
   version "1.1.3"
