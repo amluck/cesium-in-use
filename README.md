@@ -2,6 +2,17 @@
 
 > 刚开始使用的 cesium 踩过的坑，希望对你有用
 
+## :tada:  [Cesium国内镜像源](https://gitee.com/amluck/cesiumGS)
+> https://gitee.com/amluck/cesiumGS
+由于使用Cesium源码比较频繁，用gitee搞了一个镜像，一周内会手动同步3-5次
+
+## :rocket: 更新
+> 20200708
+1. Cesium版本更新到了1.71.0
+2. 部分依赖包的版本更新
+
+
+
 ## 分支介绍
 
 > 不同的分支代表不同的环境
